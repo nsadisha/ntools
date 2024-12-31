@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {CommonModule, Location} from '@angular/common';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  NavigationEnd,
+  Route,
+  Router,
+  RouterLink,
+  RouterOutlet, RoutesRecognized
+} from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import {NzPageHeaderComponent} from "ng-zorro-antd/page-header";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -14,5 +23,22 @@ import {NzPageHeaderComponent} from "ng-zorro-antd/page-header";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isCollapsed = false;
+  protected isCollapsed = false;
+  protected title = '';
+  protected subtitle = '';
+
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof RoutesRecognized) {
+        let route = event.state.root.firstChild;
+
+        this.title = route?.data['title'] || '';
+        this.subtitle = route?.data['subtitle'] || '';
+      }
+    });
+  }
+
+  get displayHeader(): boolean {
+    return this.title !== '' && this.subtitle !== '';
+  }
 }

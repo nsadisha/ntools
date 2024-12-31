@@ -14,20 +14,25 @@
       </div>
       <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" class="outer-ul">
         <li nz-menu-item>
-          <a routerLink="/">
-            <span nz-icon nzType="file"></span><span>File</span>
-          </a>
+          <a routerLink="/"><span nz-icon nzType="home"></span><span>Home</span></a>
         </li>
-        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-          <ul>
-            <li nz-menu-item>
-              <a routerLink="/hello">hello</a>
-            </li>
-            <li nz-menu-item>
-              <a routerLink="/hello123">hello 123</a>
-            </li>
-          </ul>
+        <li nz-menu-item>
+          <a routerLink="/all"><span nz-icon nzType="tool"></span><span>All Tools</span></a>
         </li>
+        <li nz-menu-item>
+          <a routerLink="/info"><span nz-icon nzType="info-circle"></span><span>Info</span></a>
+        </li>
+
+<!--        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">-->
+<!--          <ul>-->
+<!--            <li nz-menu-item>-->
+<!--              <a routerLink="/hello">hello</a>-->
+<!--            </li>-->
+<!--            <li nz-menu-item>-->
+<!--              <a routerLink="/hello123">hello 123</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </li>-->
       </ul>
       <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
           <span class="trigger"
@@ -39,11 +44,13 @@
     </div>
   </nz-sider>
   <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <nz-page-header nzBackIcon nzTitle="Title" [nzGhost]="true" nzSubtitle="This is a subtitle"></nz-page-header>
-      </div>
-    </nz-header>
+    @if(displayHeader) {
+      <nz-header>
+        <div class="app-header">
+          <nz-page-header [nzTitle]="title" [nzSubtitle]="subtitle"></nz-page-header>
+        </div>
+      </nz-header>
+    }
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>
