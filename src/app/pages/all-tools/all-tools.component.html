@@ -1,1 +1,29 @@
-<p>all-tools works!</p>
+<div nz-row nzJustify="center" style="gap: 2rem;">
+  <div nz-col nzXs="24" nzSm="24" nzMd="16" nzLg="14" nzXl="10">
+    <nz-input-group [nzSuffix]="suffixIcon">
+      <input
+        placeholder='Search All Tools...'
+        nz-input
+        [(ngModel)]="inputValue"
+        (ngModelChange)="onChange($event)"
+        [nzAutocomplete]="auto"
+      />
+    </nz-input-group>
+
+    <ng-template #suffixIcon>
+      <span nz-icon nzType="search"></span>
+    </ng-template>
+
+    <nz-autocomplete [nzDataSource]="filteredToolNames" #auto></nz-autocomplete>
+  </div>
+
+  <div nz-col nzSpan="24" class="my">
+    <div nz-row [nzGutter]="[15, 15]">
+      @for(t of tools; track t) {
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" nzXXl="4">
+          <app-tool-display-card [tool]="t" />
+        </div>
+      }
+    </div>
+  </div>
+</div>
