@@ -20,6 +20,10 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'tool/:code',
+    loadComponent: () => import('./pages/display-tool/display-tool.component').then(p => p.DisplayToolComponent),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/error/not-found/not-found.component').then(p => p.NotFoundComponent),
     title: 'Oops | Page Not Found...!!!',
