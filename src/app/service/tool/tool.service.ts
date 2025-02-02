@@ -1,7 +1,6 @@
-import {Injectable, Type} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Tool} from "../../model/tool.model";
-import {tools} from "../../config/tools.config";
-import {ToolNotFoundComponent} from "../../tools/tool-not-found/tool-not-found.component";
+import {notFoundTool, tools} from "../../config/tools.config";
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,7 @@ export class ToolService {
     return this.tools.map(tool => tool.name);
   }
 
-  getComponentFromToolCode(code: string): Type<any> {
-    return this.tools
-      .find(tool => tool.toolCode === code)?.component || ToolNotFoundComponent;
+  getToolFromCode(code: string): Tool {
+    return this.tools.find(tool => tool.toolCode === code) || notFoundTool;
   }
 }
