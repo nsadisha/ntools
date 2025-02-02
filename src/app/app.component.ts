@@ -1,19 +1,14 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {CommonModule, Location} from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  NavigationEnd,
-  Route,
-  Router,
   RouterLink,
-  RouterOutlet, RoutesRecognized
+  RouterOutlet
 } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import {NzPageHeaderComponent} from "ng-zorro-antd/page-header";
-import {filter} from "rxjs";
+import {RouteDataService} from "./service/route-data/route-data.service";
 
 @Component({
   selector: 'app-root',
@@ -27,14 +22,10 @@ export class AppComponent {
   protected title = '';
   protected subtitle = '';
 
-  constructor(private router: Router) {
-    router.events.subscribe(event => {
-      if (event instanceof RoutesRecognized) {
-        let route = event.state.root.firstChild;
-
-        this.title = route?.data['title'] || '';
-        this.subtitle = route?.data['subtitle'] || '';
-      }
+  constructor(routeDataService: RouteDataService) {
+    routeDataService.data$.subscribe(data => {
+      this.title = data.title || '';
+      this.subtitle = data.subtitle || '';
     });
   }
 
