@@ -7,6 +7,7 @@ import {NzIconDirective} from "ng-zorro-antd/icon";
 import {ToolDisplayCardComponent} from "../../components/tool-display-card/tool-display-card.component";
 import {ToolService} from "../../service/tool/tool.service";
 import {Tool} from "../../model/tool.model";
+import {NzEmptyComponent} from "ng-zorro-antd/empty";
 
 @Component({
   selector: 'app-all-tools',
@@ -19,7 +20,8 @@ import {Tool} from "../../model/tool.model";
     NzAutocompleteComponent,
     NzIconDirective,
     NzInputGroupComponent,
-    ToolDisplayCardComponent
+    ToolDisplayCardComponent,
+    NzEmptyComponent
   ],
   templateUrl: './all-tools.component.html',
   styleUrl: './all-tools.component.scss'
@@ -55,5 +57,10 @@ export class AllToolsComponent implements OnInit {
   ngOnInit(): void {
     this.tools = this.toolService.getAllTools();
     this.toolNames = this.toolService.getToolNames();
+  }
+
+  clearSearch() {
+    this.inputValue = "";
+    this.tools = this.toolService.getAllTools();
   }
 }

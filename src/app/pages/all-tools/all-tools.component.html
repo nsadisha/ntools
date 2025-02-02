@@ -11,13 +11,21 @@
     </nz-input-group>
 
     <ng-template #suffixIcon>
-      <span nz-icon nzType="search"></span>
+      @if (inputValue) {
+        <span nz-icon
+              class="ant-input-clear-icon"
+              nzTheme="fill"
+              nzType="close-circle"
+              (click)="clearSearch()"></span>
+      } @else {
+        <span nz-icon nzType="search"></span>
+      }
     </ng-template>
 
     <nz-autocomplete [nzDataSource]="filteredToolNames" #auto></nz-autocomplete>
   </div>
 
-  <div nz-col nzSpan="24" class="my">
+  <div nz-col nzSpan="24">
     <div nz-row [nzGutter]="[15, 15]">
       @for(t of tools; track t) {
         <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" nzXXl="4">
@@ -26,4 +34,10 @@
       }
     </div>
   </div>
+
+  @if(tools.length === 0) {
+    <div nz-col nzSpan="24">
+      <nz-empty nzNotFoundContent="No tools found." />
+    </div>
+  }
 </div>
