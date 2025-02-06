@@ -3,6 +3,6 @@
     <span nz-icon nzType="tool" theme="fill"></span>
   </span>
 
-  <h5 nz-typography nzEllipsis>{{tool.name}}</h5>
+  <h5 nz-typography [nzTooltipTitle]="tool.name" nzTooltipPlacement="topLeft" nzEllipsis nz-tooltip>{{tool.name}}</h5>
   <span nz-typography nzType="secondary">{{tool.category}}</span>
 </div>
