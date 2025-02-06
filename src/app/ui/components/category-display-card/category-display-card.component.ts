@@ -23,6 +23,8 @@ export class CategoryDisplayCardComponent {
   get toolCount(): string {
     if(this.category.toolCount == 0) {
       return 'No tools available.';
+    } else if (this.category.toolCount == 1) {
+      return this.category.toolCount + ' Tool';
     }
     return this.category.toolCount + ' Tools';
   }
