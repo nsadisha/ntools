@@ -10,6 +10,7 @@ export class RouteDataService {
   private dataSubject = new BehaviorSubject<RouteDataModel>({});
 
   data$ = this.dataSubject.asObservable();
+  navigationEndData$ = this.getNavigationEndDataObservable();
 
   constructor(private router: Router, private route: ActivatedRoute) {
     // Listen to route changes and update title & subtitle
@@ -34,5 +35,12 @@ export class RouteDataService {
   updateData(data: Partial<RouteDataModel>) {
     const newData = { ...this.dataSubject.value, ...data };
     this.dataSubject.next(newData);
+  }
+
+  getNavigationEndDataObservable() {
+    return this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(event => event as NavigationEnd)
+    );
   }
 }

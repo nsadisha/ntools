@@ -22,6 +22,7 @@ export class AppComponent {
   protected title = '';
   protected subtitle = '';
   protected back: string | null = null;
+  protected url: string = "";
 
   constructor(private routeDataService: RouteDataService) {
     this.routeDataService.data$.subscribe(data => {
@@ -29,9 +30,17 @@ export class AppComponent {
       this.subtitle = data.subtitle || '';
       this.back = (data.back || false) ? '' : null;
     });
+
+    this.routeDataService.navigationEndData$.subscribe((data) => {
+      this.url = data.url;
+    });
   }
 
   get displayHeader(): boolean {
     return this.title !== '' && this.subtitle !== '';
+  }
+
+  isRouteActive(route: string): boolean {
+    return this.url === route;
   }
 }

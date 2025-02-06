@@ -13,16 +13,16 @@
         </a>
       </div>
       <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" class="outer-ul">
-        <li nz-menu-item>
+        <li nz-menu-item [nzSelected]="isRouteActive('/')">
           <a routerLink="/"><span nz-icon nzType="home"></span><span>Home</span></a>
         </li>
-        <li nz-menu-item>
+        <li nz-menu-item [nzSelected]="isRouteActive('/categories')">
           <a routerLink="/categories"><span nz-icon nzType="appstore"></span><span>Categories</span></a>
         </li>
-        <li nz-menu-item>
+        <li nz-menu-item [nzSelected]="isRouteActive('/tools')">
           <a routerLink="/tools"><span nz-icon nzType="tool"></span><span>All Tools</span></a>
         </li>
-        <li nz-menu-item>
+        <li nz-menu-item [nzSelected]="isRouteActive('/info')">
           <a routerLink="/info"><span nz-icon nzType="info-circle"></span><span>Info</span></a>
         </li>
 
