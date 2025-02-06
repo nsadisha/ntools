@@ -39,10 +39,19 @@
               "src/_redirects"
             ],
             "styles": [
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/katex/dist/katex.min.css",
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/mermaid/dist/mermaid.min.js",
+              "node_modules/katex/dist/katex.min.js",
+              "node_modules/katex/dist/contrib/auto-render.min.js"
+            ]
           },
           "configurations": {
             "production": {
