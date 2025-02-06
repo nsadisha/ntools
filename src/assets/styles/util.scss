@@ -3,6 +3,22 @@
   display: flex;
 }
 
+.d-block {
+  display: block;
+}
+
+.span {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  height: inherit;
+}
+
 // Align
 .justify-content-center {
   justify-content: center;
