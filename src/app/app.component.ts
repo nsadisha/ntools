@@ -21,11 +21,13 @@ export class AppComponent {
   protected isCollapsed = false;
   protected title = '';
   protected subtitle = '';
+  protected back: string | null = null;
 
-  constructor(routeDataService: RouteDataService) {
-    routeDataService.data$.subscribe(data => {
+  constructor(private routeDataService: RouteDataService) {
+    this.routeDataService.data$.subscribe(data => {
       this.title = data.title || '';
       this.subtitle = data.subtitle || '';
+      this.back = (data.back || false) ? '' : null;
     });
   }
 

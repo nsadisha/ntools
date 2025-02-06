@@ -22,6 +22,9 @@ export const routes: Routes = [
   {
     path: 'tool/:code',
     loadComponent: () => import('./ui/pages/display-tool/display-tool.component').then(p => p.DisplayToolComponent),
+    data: {
+      back: true
+    }
   },
   {
     path: '**',

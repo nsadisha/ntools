@@ -25,12 +25,14 @@ export class RouteDataService {
     ).subscribe(data => {
       this.updateData({
         title: data['title'] || '',
-        subtitle: data['subtitle'] || ''
-      })
+        subtitle: data['subtitle'] || '',
+        back: data['back'] || false
+      });
     });
   }
 
-  updateData(data: RouteDataModel) {
-    this.dataSubject.next(data);
+  updateData(data: Partial<RouteDataModel>) {
+    const newData = { ...this.dataSubject.value, ...data };
+    this.dataSubject.next(newData);
   }
 }
