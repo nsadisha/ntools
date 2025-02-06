@@ -1,0 +1,8 @@
+<div class="category-display-card" [routerLink]="'/category/' + category.type">
+  <span class="background-decoration">
+    <span nz-icon nzType="appstore" ></span>
+  </span>
+
+  <h5 nz-typography [nzTooltipTitle]="category.name" nzTooltipPlacement="topLeft" nzEllipsis nz-tooltip>{{category.name}}</h5>
+  <span nz-typography nzType="secondary">{{toolCount}}</span>
+</div>

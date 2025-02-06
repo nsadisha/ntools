@@ -27,6 +27,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'categories',
+    loadComponent: () => import('./ui/pages/all-categories/all-categories.component').then(p => p.AllCategoriesComponent),
+    title: 'Ntools | Categories',
+    data: {
+      title: "All Categories",
+      subtitle: "Search through all the categories"
+    }
+  },
+  {
     path: '**',
     loadComponent: () => import('./ui/pages/error/not-found/not-found.component').then(p => p.NotFoundComponent),
     title: 'Oops | Page Not Found...!!!',
