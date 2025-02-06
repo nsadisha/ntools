@@ -36,6 +36,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'category/:type',
+    loadComponent: () => import('./ui/pages/display-category/display-category.component').then(p => p.DisplayCategoryComponent),
+    data: {
+      back: true
+    }
+  },
+  {
     path: '**',
     loadComponent: () => import('./ui/pages/error/not-found/not-found.component').then(p => p.NotFoundComponent),
     title: 'Oops | Page Not Found...!!!',

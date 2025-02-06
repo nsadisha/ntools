@@ -24,6 +24,6 @@ export class CategoryDisplayCardComponent {
     if(this.category.toolCount == 0) {
       return 'No tools available.';
     }
-    return this.category.toolCount + ' tools';
+    return this.category.toolCount + ' Tools';
   }
 }

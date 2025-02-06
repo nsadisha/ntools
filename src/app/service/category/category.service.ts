@@ -27,7 +27,12 @@ export class CategoryService {
 
   getCategoriesByName(name: string): Category[] {
     return this.categories
-      .filter(tool => tool.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+      .filter(category => category.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+  }
+
+  getCategoryByCategoryCode(code: string): Category | undefined {
+    return this.categories
+      .find(category => category.type == code);
   }
 
   getAllCategoryNames(): string[] {
