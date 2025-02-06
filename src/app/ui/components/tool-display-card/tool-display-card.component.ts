@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Tool} from "../../model/tool.model";
+import {Tool} from "../../../model/tool.model";
 import {RouterLink} from "@angular/router";
 import {NzTypographyComponent} from "ng-zorro-antd/typography";
 import {NzIconDirective} from "ng-zorro-antd/icon";

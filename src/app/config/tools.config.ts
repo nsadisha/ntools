@@ -1,8 +1,8 @@
 import {Tool, ToolType} from "../model/tool.model";
-import {PlainTextEditorComponent} from "../tools/plain-text-editor/plain-text-editor.component";
-import {MarkdownTextEditorComponent} from "../tools/markdown-text-editor/markdown-text-editor.component";
+import {PlainTextEditorComponent} from "../ui/tools/plain-text-editor/plain-text-editor.component";
+import {MarkdownTextEditorComponent} from "../ui/tools/markdown-text-editor/markdown-text-editor.component";
 import {CategoryType} from "../model/category.model";
-import {ToolNotFoundComponent} from "../tools/tool-not-found/tool-not-found.component";
+import {ToolNotFoundComponent} from "../ui/tools/tool-not-found/tool-not-found.component";
 
 export const notFoundTool: Tool = {
   id: 0,

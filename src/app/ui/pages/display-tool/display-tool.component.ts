@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, Injector, OnInit, Type, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ToolService} from "../../service/tool/tool.service";
-import {Tool} from "../../model/tool.model";
+import {ToolService} from "../../../service/tool/tool.service";
+import {Tool} from "../../../model/tool.model";
 import {Title} from "@angular/platform-browser";
-import {RouteDataService} from "../../service/route-data/route-data.service";
+import {RouteDataService} from "../../../service/route-data/route-data.service";
 
 @Component({
   selector: 'app-display-tool',

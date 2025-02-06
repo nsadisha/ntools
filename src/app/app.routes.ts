@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home.component').then(p => p.HomeComponent),
+    loadComponent: () => import('./ui/pages/home/home.component').then(p => p.HomeComponent),
     title: 'Ntools | Home',
     data: {
       title: "Home",
@@ -12,7 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'all',
-    loadComponent: () => import('./pages/all-tools/all-tools.component').then(p => p.AllToolsComponent),
+    loadComponent: () => import('./ui/pages/all-tools/all-tools.component').then(p => p.AllToolsComponent),
     title: 'Ntools | All Tools',
     data: {
       title: "All Tools",
@@ -21,11 +21,11 @@ export const routes: Routes = [
   },
   {
     path: 'tool/:code',
-    loadComponent: () => import('./pages/display-tool/display-tool.component').then(p => p.DisplayToolComponent),
+    loadComponent: () => import('./ui/pages/display-tool/display-tool.component').then(p => p.DisplayToolComponent),
   },
   {
     path: '**',
-    loadComponent: () => import('./pages/error/not-found/not-found.component').then(p => p.NotFoundComponent),
+    loadComponent: () => import('./ui/pages/error/not-found/not-found.component').then(p => p.NotFoundComponent),
     title: 'Oops | Page Not Found...!!!',
     data: {
       title: "Page Not Found!",

@@ -5,8 +5,8 @@ import {FormsModule} from "@angular/forms";
 import {NzAutocompleteComponent, NzAutocompleteTriggerDirective} from "ng-zorro-antd/auto-complete";
 import {NzIconDirective} from "ng-zorro-antd/icon";
 import {ToolDisplayCardComponent} from "../../components/tool-display-card/tool-display-card.component";
-import {ToolService} from "../../service/tool/tool.service";
-import {Tool} from "../../model/tool.model";
+import {ToolService} from "../../../service/tool/tool.service";
+import {Tool} from "../../../model/tool.model";
 import {NzEmptyComponent} from "ng-zorro-antd/empty";
 
 @Component({
