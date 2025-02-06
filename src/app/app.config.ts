@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideNzIcons } from './icons-provider';
@@ -16,7 +16,7 @@ registerLocaleData(en);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
     provideNzIcons(),
     provideNzI18n(en_US),
     importProvidersFrom(FormsModule),
