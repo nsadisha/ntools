@@ -11,7 +11,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'all',
+    path: 'tools',
     loadComponent: () => import('./ui/pages/all-tools/all-tools.component').then(p => p.AllToolsComponent),
     title: 'Ntools | All Tools',
     data: {
