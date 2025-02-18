@@ -3,6 +3,7 @@ import {PlainTextEditorComponent} from "../ui/tools/plain-text-editor/plain-text
 import {MarkdownTextEditorComponent} from "../ui/tools/markdown-text-editor/markdown-text-editor.component";
 import {CategoryType} from "../model/category.model";
 import {ToolNotFoundComponent} from "../ui/tools/tool-not-found/tool-not-found.component";
+import {BmiCalculatorComponent} from "../ui/tools/bmi-calculator/bmi-calculator.component";
 
 export const notFoundTool: Tool = {
   id: 0,
@@ -29,5 +30,13 @@ export const tools: Tool[] = [
     toolCode: ToolType.MARKDOWN_TEXT_EDITOR,
     category: CategoryType.TEXT_EDITOR,
     component: MarkdownTextEditorComponent
+  },
+  {
+    id: 3,
+    name: 'BMI Calculator',
+    description: 'A calculator for calculating BMI.',
+    toolCode: ToolType.BMI_CALCULATOR,
+    category: CategoryType.HEALTH_AND_FITNESS_CALCULATOR,
+    component: BmiCalculatorComponent
   }
 ];

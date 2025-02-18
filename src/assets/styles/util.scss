@@ -28,6 +28,9 @@
 .mt-1 {
   margin-top: 1rem;
 }
+.ms-auto {
+  margin-left: auto;
+}
 
 // Text
 .text-start {
@@ -45,4 +48,8 @@
 // Size
 .h-inherit {
   height: inherit;
+}
+
+.w-100 {
+  width: 100%;
 }
