@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import {provideMarkdown} from "ngx-markdown";
+import {NzModalModule} from "ng-zorro-antd/modal";
 
 registerLocaleData(en);
 
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideNzIcons(),
     provideNzI18n(en_US),
     importProvidersFrom(FormsModule),
+    importProvidersFrom(NzModalModule),
     provideAnimationsAsync(),
     provideHttpClient(),
     provideMarkdown(),
