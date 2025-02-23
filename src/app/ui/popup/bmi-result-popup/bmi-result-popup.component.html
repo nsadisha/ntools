@@ -18,10 +18,26 @@
 <!--    </div>-->
   </nz-col>
   <nz-col nzSm="24">
-    <p nz-typography>Healthy BMI range is from {{toFixed(data.healthyRange.start)}}{{data.unit}} to {{toFixed(data.healthyRange.end)}}{{data.unit}}.</p>
-    <p nz-typography>Considering your height, You should maintain your weight between {{toFixed(data.healthyWeightRange.start)}}kg and {{toFixed(data.healthyRange.end)}}kg.</p>
-    <p nz-typography>Your BMI category: {{data.bmiCategory}}</p>
-    <p nz-typography>Your Ponderal Index: {{toFixed(data.ponderalIndex)}}{{data.ponderalUnit}}</p>
+    <div class="footer-section">
+      <div class="row-section">
+        <div class="footer-card">
+          <h5 nz-typography>BMI Category</h5>
+          <p nz-typography nzType="secondary">{{data.bmiCategory}}</p>
+        </div>
+        <div class="footer-card">
+          <h5 nz-typography>Ponderal Index</h5>
+          <p nz-typography nzType="secondary">{{toFixed(data.ponderalIndex)}}{{data.ponderalUnit}}</p>
+        </div>
+      </div>
+      <div class="footer-card">
+        <h5 nz-typography>Healthy BMI range</h5>
+        <p nz-typography nzType="secondary">Healthy BMI range is from {{toFixed(data.healthyRange.start)}}{{data.unit}} to {{toFixed(data.healthyRange.end)}}{{data.unit}}.</p>
+      </div>
+      <div class="footer-card">
+        <h5 nz-typography>Healthy Weight range</h5>
+        <p nz-typography nzType="secondary">Considering your height, You should maintain your weight between {{toFixed(data.healthyWeightRange.start)}}kg and {{toFixed(data.healthyRange.end)}}kg.</p>
+      </div>
+    </div>
   </nz-col>
 </nz-row>
 
