@@ -1,1 +1,28 @@
-<p>{{ dataString }}</p>
+<nz-row nzJustify="center">
+  <nz-col>
+<!--    <div class="gauge-wrapper">-->
+      <ngx-gauge [type]="'arch'"
+                 [value]="bmi"
+                 [label]="bmiConfig.label"
+                 [size]="bmiConfig.size"
+                 [min]="bmiConfig.min"
+                 [max]="bmiConfig.max"
+                 [thick]="bmiConfig.thickness"
+                 [cap]="'round'"
+                 [markers]="bmiMarkerConfig.adultMen"
+                 [foregroundColor]="bmiConfig.foregroundColor"
+                 [duration]="bmiConfig.duration"
+                 [thresholds]="bmiConfig.thresholds"
+                 [append]="bmiConfig.gaugeAppendText">
+      </ngx-gauge>
+<!--    </div>-->
+  </nz-col>
+  <nz-col nzSm="24">
+    <p nz-typography>Healthy BMI range is from {{toFixed(data.healthyRange.start)}}{{data.unit}} to {{toFixed(data.healthyRange.end)}}{{data.unit}}.</p>
+    <p nz-typography>Considering your height, You should maintain your weight between {{toFixed(data.healthyWeightRange.start)}}kg and {{toFixed(data.healthyRange.end)}}kg.</p>
+    <p nz-typography>Your BMI category: {{data.bmiCategory}}</p>
+    <p nz-typography>Your Ponderal Index: {{toFixed(data.ponderalIndex)}}{{data.ponderalUnit}}</p>
+  </nz-col>
+</nz-row>
+
+

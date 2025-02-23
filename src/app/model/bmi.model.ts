@@ -3,10 +3,12 @@ export interface BmiModel {
   height: number;
   weight: number;
   bmi: number;
+  unit: string;
   bmiCategory: BmiCategory;
   healthyRange: BmiRange;
   healthyWeightRange: BmiRange;
   ponderalIndex: number;
+  ponderalUnit: string;
 }
 
 export interface BmiRange {
