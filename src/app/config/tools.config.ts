@@ -4,6 +4,7 @@ import {MarkdownTextEditorComponent} from "../ui/tools/markdown-text-editor/mark
 import {CategoryType} from "../model/category.model";
 import {ToolNotFoundComponent} from "../ui/tools/tool-not-found/tool-not-found.component";
 import {BmiCalculatorComponent} from "../ui/tools/bmi-calculator/bmi-calculator.component";
+import {AgeCalculatorComponent} from "../ui/tools/age-calculator/age-calculator.component";
 
 export const notFoundTool: Tool = {
   id: 0,
@@ -38,5 +39,13 @@ export const tools: Tool[] = [
     toolCode: ToolType.BMI_CALCULATOR,
     category: CategoryType.HEALTH_AND_FITNESS_CALCULATOR,
     component: BmiCalculatorComponent
+  },
+  {
+    id: 4,
+    name: 'Age Calculator',
+    description: 'A calculator for calculating your age.',
+    toolCode: ToolType.AGE_CALCULATOR,
+    category: CategoryType.DATE_TIME_CALCULATOR,
+    component: AgeCalculatorComponent
   }
 ];

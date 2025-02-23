@@ -1,0 +1,51 @@
+<div nz-row nzJustify="space-between" [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <div nz-col nzLg="15">
+    <p nz-paragraph>This Age Calculator shows the exact time difference between two dates in years, months, weeks, days, hours, minutes, seconds, and milliseconds—perfect for calculating your age or any time interval with precision!</p>
+    <nz-card>
+      <div nz-col class="w-100">
+        <form [formGroup]="formGroup" (ngSubmit)="calculate()" nz-col nzMd="24" nzLg="24" nzXl="24">
+          <nz-row [nzGutter]="[LayoutConfig.ROW_GUTTER, LayoutConfig.ROW_GUTTER]" nzAlign="middle">
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Birthday: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Birthday is required">
+                  <nz-date-picker formControlName="birthday"></nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>To Date: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Date is required">
+                  <nz-date-picker formControlName="toDate"></nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="24">
+              <div class="d-flex mt-1">
+                <button type="submit" class="ms-auto" nz-button nzType="primary">Calculate Age</button>
+              </div>
+            </nz-col>
+          </nz-row>
+        </form>
+      </div>
+    </nz-card>
+
+    <div class="mt-1">
+      @if(stringResults.length > 0) {
+        <h4 nz-typography>Your age is:</h4>
+
+        <div class="info-card-section">
+          @for (result of stringResults; track result) {
+            <div class="info-card">{{result}}</div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+  <div nz-col nzLg="9">
+    <!--    Serving ads here-->
+  </div>
+</div>
