@@ -67,67 +67,6 @@
               </div>
             </nz-col>
           </nz-row>
-
-          <table class="form-table" style="display: none">
-            <tr>
-              <td><h5 nz-typography>Age: </h5></td>
-              <td>
-                <nz-form-item>
-                  <nz-form-control nzErrorTip="Age is required">
-                    <nz-input-group nzSuffix="years">
-                      <nz-input-number
-                        nzBorderless
-                        formControlName="age"
-                        [nzMin]="2"
-                        [nzMax]="150"
-                        [nzStep]="1" />
-                    </nz-input-group>
-                  </nz-form-control>
-                </nz-form-item>
-              </td>
-            </tr>
-            <tr>
-              <td><h5 nz-typography>Height: </h5></td>
-              <td>
-                <nz-form-item>
-                  <nz-form-control nzErrorTip="Height is required">
-                    <nz-input-group nzSuffix="cm">
-                      <nz-input-number
-                        nzBorderless
-                        formControlName="height"
-                        [nzMin]="1"
-                        [nzMax]="500"
-                        [nzStep]="0.1"
-                        [nzPlaceHolder]="'Height in centimeters'" />
-                    </nz-input-group>
-                  </nz-form-control>
-                </nz-form-item>
-              </td>
-            </tr>
-            <tr>
-              <td><h5 nz-typography>Weight: </h5></td>
-              <td>
-                <nz-form-item>
-                  <nz-form-control nzErrorTip="Weight is required">
-                    <nz-input-group nzSuffix="kg">
-                      <nz-input-number
-                        nzBorderless
-                        formControlName="weight"
-                        [nzMin]="1"
-                        [nzMax]="500"
-                        [nzStep]="0.1"
-                        [nzPlaceHolder]="'Weight in kg'" />
-                    </nz-input-group>
-                  </nz-form-control>
-                </nz-form-item>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <button type="submit" nz-button nzType="primary">Calculate BMI</button>
-              </td>
-            </tr>
-          </table>
         </form>
       </div>
     </nz-card>

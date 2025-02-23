@@ -4,7 +4,6 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {NzInputNumberComponent} from "ng-zorro-antd/input-number";
 import {NzTypographyComponent} from "ng-zorro-antd/typography";
 import {NzButtonComponent} from "ng-zorro-antd/button";
-import {NzInputGroupComponent} from "ng-zorro-antd/input";
 import {NzFormControlComponent} from "ng-zorro-antd/form";
 import {HealthAndFitnessService} from "../../../logic/health-and-fitness/health-and-fitness.service";
 import {MarkdownDisplayComponent} from "../../components/markdown-display/markdown-display.component";
@@ -26,7 +25,6 @@ import {Gender} from "../../../util/constants.util";
     ReactiveFormsModule,
     NzTypographyComponent,
     NzButtonComponent,
-    NzInputGroupComponent,
     NzFormControlComponent,
     MarkdownDisplayComponent,
     NzCardComponent,
@@ -70,7 +68,6 @@ export class BmiCalculatorComponent {
         nzData: bmiModel,
       });
     } else {
-      console.log("12993");
       Object.values(this.formGroup.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
