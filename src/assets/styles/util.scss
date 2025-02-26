@@ -25,8 +25,11 @@
 }
 
 // Spacing
+.mt-0 {
+  margin-top: 0 !important;
+}
 .mt-1 {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 .ms-auto {
   margin-left: auto;

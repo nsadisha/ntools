@@ -5,6 +5,7 @@ import {CategoryType} from "../model/category.model";
 import {ToolNotFoundComponent} from "../ui/tools/tool-not-found/tool-not-found.component";
 import {BmiCalculatorComponent} from "../ui/tools/bmi-calculator/bmi-calculator.component";
 import {AgeCalculatorComponent} from "../ui/tools/age-calculator/age-calculator.component";
+import {UnitConverterComponent} from "../ui/tools/unit-converter/unit-converter.component";
 
 export const notFoundTool: Tool = {
   id: 0,
@@ -47,5 +48,13 @@ export const tools: Tool[] = [
     toolCode: ToolType.AGE_CALCULATOR,
     category: CategoryType.DATE_TIME_CALCULATOR,
     component: AgeCalculatorComponent
-  }
+  },
+  {
+    id: 5,
+    name: 'Unit Converter',
+    description: 'Converts between various units of measurements.',
+    toolCode: ToolType.UNIT_CONVERTER,
+    category: CategoryType.UNIT_CONVERTER,
+    component: UnitConverterComponent
+  },
 ];

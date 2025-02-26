@@ -15,4 +15,5 @@ export enum ToolType {
   MARKDOWN_TEXT_EDITOR = 'markdown-text-editor',
   BMI_CALCULATOR = 'bmi-calculator',
   AGE_CALCULATOR = 'age-calculator',
+  UNIT_CONVERTER = 'unit-converter',
 }
