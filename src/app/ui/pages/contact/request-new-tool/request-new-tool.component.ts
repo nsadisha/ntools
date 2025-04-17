@@ -6,7 +6,7 @@ import {NzColDirective, NzRowDirective} from "ng-zorro-antd/grid";
 import {NzFormControlComponent} from "ng-zorro-antd/form";
 import {NzTypographyComponent} from "ng-zorro-antd/typography";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ApplicationConfig} from "../../../../config/application.config";
+import {ApplicationConfig, LayoutConfig} from "../../../../config/application.config";
 import {ContactUsApiService} from "../../../../api/contact/contact-us-api.service";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {getInputErrorMessage, validateAllFields} from "../../../../util/form.util";
@@ -79,4 +79,6 @@ export class RequestNewToolComponent {
       toolDescription: getInputErrorMessage(this.newToolFormGroup.controls.toolDescription, "Tool Description")
     };
   }
+
+  protected readonly LayoutConfig = LayoutConfig;
 }

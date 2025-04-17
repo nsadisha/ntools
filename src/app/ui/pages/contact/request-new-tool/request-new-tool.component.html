@@ -1,4 +1,4 @@
-<nz-row>
+<nz-row  [nzGutter]="LayoutConfig.ROW_GUTTER">
   <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15" nzXl="11">
     <!-- Request New Tool -->
     <nz-card>
@@ -46,5 +46,11 @@
         </div>
       </form>
     </nz-card>
+  </nz-col>
+
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="13">
+    <div class="featuring-image">
+      <img alt="request-a-new-tool" src="assets/images/request_a_new_tool.svg" />
+    </div>
   </nz-col>
 </nz-row>

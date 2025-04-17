@@ -1,4 +1,4 @@
-<nz-row>
+<nz-row  [nzGutter]="LayoutConfig.ROW_GUTTER">
   <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15" nzXl="11">
     <!-- Report a Bug -->
     <nz-card>
@@ -54,5 +54,11 @@
         </div>
       </form>
     </nz-card>
+  </nz-col>
+
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="13">
+    <div class="featuring-image">
+      <img alt="report-a-bug" src="assets/images/report_a_bug.svg" />
+    </div>
   </nz-col>
 </nz-row>

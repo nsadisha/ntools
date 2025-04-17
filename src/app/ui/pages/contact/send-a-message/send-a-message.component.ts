@@ -6,7 +6,7 @@ import {NzColDirective, NzRowDirective} from "ng-zorro-antd/grid";
 import {NzFormControlComponent} from "ng-zorro-antd/form";
 import {NzTypographyComponent} from "ng-zorro-antd/typography";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ApplicationConfig} from "../../../../config/application.config";
+import {ApplicationConfig, LayoutConfig} from "../../../../config/application.config";
 import {getInputErrorMessage, validateAllFields} from "../../../../util/form.util";
 import {ContactUsModel} from "../../../../model/contact.model";
 import {ContactUsApiService} from "../../../../api/contact/contact-us-api.service";
@@ -76,4 +76,6 @@ export class SendAMessageComponent {
       message: getInputErrorMessage(this.contactFormGroup.controls.message, "Message")
     };
   }
+
+  protected readonly LayoutConfig = LayoutConfig;
 }
