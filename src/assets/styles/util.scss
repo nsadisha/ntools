@@ -28,24 +28,14 @@
 .mt-0 {
   margin-top: 0 !important;
 }
+.mb-0 {
+  margin-bottom: 0 !important;
+}
 .mt-1 {
   margin-top: 1rem !important;
 }
 .ms-auto {
   margin-left: auto;
-}
-
-// Text
-.text-start {
-  text-align: start;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-end {
-  text-align: end;
 }
 
 // Size
@@ -55,4 +45,16 @@
 
 .w-100 {
   width: 100%;
+}
+
+
+// Rotate
+.ry-180 {
+  transform: rotateY(180deg);
+}
+
+
+// Background - for testing
+.bg-red {
+  background-color: red;
 }

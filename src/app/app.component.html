@@ -25,17 +25,19 @@
         <li nz-menu-item [nzSelected]="isRouteActive('/info')">
           <a routerLink="/info"><span nz-icon nzType="info-circle"></span><span>Info</span></a>
         </li>
-
-<!--        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">-->
-<!--          <ul>-->
-<!--            <li nz-menu-item>-->
-<!--              <a routerLink="/hello">hello</a>-->
-<!--            </li>-->
-<!--            <li nz-menu-item>-->
-<!--              <a routerLink="/hello123">hello 123</a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <li nz-submenu nzOpen nzTitle="Contact Us" nzIcon="phone">
+          <ul>
+            <li nz-menu-item [nzSelected]="isRouteActive('/contact/send-a-message')">
+              <a routerLink="/contact/send-a-message">Send a Message</a>
+            </li>
+            <li nz-menu-item [nzSelected]="isRouteActive('/contact/request-new-tool')">
+              <a routerLink="/contact/request-new-tool">Request New Tool</a>
+            </li>
+            <li nz-menu-item [nzSelected]="isRouteActive('/contact/report-a-bug')">
+              <a routerLink="/contact/report-a-bug">Report a Bug</a>
+            </li>
+          </ul>
+        </li>
       </ul>
       <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
           <span class="trigger"

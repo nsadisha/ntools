@@ -1,0 +1,58 @@
+<nz-row>
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15" nzXl="11">
+    <!-- Report a Bug -->
+    <nz-card>
+      <div class="form-header-section">
+        <h5 nz-typography class="mb-0 text-primary" nzType="secondary">Help Us Improve Our Tools</h5>
+        <h2 nz-typography class="mt-0">Let Us Know About Issues</h2>
+        <p nz-typography nzType="secondary">Found a bug or issue while using our tools? We appreciate your feedback! Use the form below to report any problems so we can fix them quickly and improve your experience. Your help is crucial in making our tools better!</p>
+      </div>
+      <form [formGroup]="bugReportFormGroup" (ngSubmit)="submitBugReportForm()">
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="bugReportFormErrorMessages.name">
+            <label><strong>Full name</strong></label>
+            <input nz-input formControlName="name" placeholder="Enter your name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="bugReportFormErrorMessages.email">
+            <label><strong>Email address</strong></label>
+            <input nz-input formControlName="email" placeholder="Enter your email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="bugReportFormErrorMessages.bugName">
+            <label><strong>Bug name</strong></label>
+            <input nz-input formControlName="bugName" placeholder="What was the issue" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="bugReportFormErrorMessages.bugUrl">
+            <label><strong>Bug URL</strong></label>
+            <input nz-input formControlName="bugUrl" placeholder="Provide the url" />
+            <small class="text-secondary">Please share the URL of the page where you encountered the issue!</small>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="bugReportFormErrorMessages.bugDescription">
+            <label><strong>Bug description</strong></label>
+            <nz-textarea-count [nzMaxCharacterCount]="maxTextareaLength">
+            <textarea nz-input formControlName="bugDescription"
+                      [nzAutosize]="{ minRows: 5, maxRows: 8 }"
+                      placeholder="Describe the issue"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div class="d-flex mt-1">
+          <button type="submit" class="ms-auto" nz-button nzType="primary"
+                  [nzLoading]="isBugReportFormSubmitting">Report Bug</button>
+        </div>
+      </form>
+    </nz-card>
+  </nz-col>
+</nz-row>
