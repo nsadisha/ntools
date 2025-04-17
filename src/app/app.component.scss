@@ -26,46 +26,54 @@
   }
 }
 
-.header-trigger {
-  height: 64px;
-  padding: 20px 24px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .3s,padding 0s;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .trigger {
-    color: white;
-    transition: 0.2s;
-
-    &.rotated {
-      transform: rotate(180deg);
-    }
-
-    &:hover {
-      color: #1890ff;
-    }
-  }
-}
+//.header-trigger {
+//  height: 64px;
+//  padding: 20px 24px;
+//  font-size: 18px;
+//  font-weight: 500;
+//  cursor: pointer;
+//  transition: all .3s,padding 0s;
+//
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//  .trigger {
+//    color: white;
+//    transition: 0.2s;
+//
+//    &.rotated {
+//      transform: rotate(180deg);
+//    }
+//
+//    &:hover {
+//      color: #1890ff;
+//    }
+//  }
+//}
 
 .sidebar-logo {
   position: relative;
   height: 64px;
-  padding-left: 24px;
+  padding-left: 16px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
   transition: all .3s;
 
   img {
     display: inline-block;
-    //width: 100px;
     height: 42px;
     vertical-align: middle;
+  }
+
+  &.collapsed {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+
+    img {
+      transform: scale(0.9);
+    }
   }
 
   h1 {
