@@ -6,6 +6,7 @@ import {ToolNotFoundComponent} from "../ui/tools/tool-not-found/tool-not-found.c
 import {BmiCalculatorComponent} from "../ui/tools/bmi-calculator/bmi-calculator.component";
 import {AgeCalculatorComponent} from "../ui/tools/age-calculator/age-calculator.component";
 import {UnitConverterComponent} from "../ui/tools/unit-converter/unit-converter.component";
+import {RandomStringGeneratorComponent} from "../ui/tools/random-string-generator/random-string-generator.component";
 
 export const notFoundTool: Tool = {
   id: 0,
@@ -56,5 +57,13 @@ export const tools: Tool[] = [
     toolCode: ToolType.UNIT_CONVERTER,
     category: CategoryType.UNIT_CONVERTER,
     component: UnitConverterComponent
+  },
+  {
+    id: 6,
+    name: 'Random String Generator',
+    description: 'Generates random strings based on your needs.',
+    toolCode: ToolType.RANDOM_STRING_GENERATOR,
+    category: CategoryType.RANDOM_GENERATOR,
+    component: RandomStringGeneratorComponent
   },
 ];

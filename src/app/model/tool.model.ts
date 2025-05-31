@@ -16,4 +16,5 @@ export enum ToolType {
   BMI_CALCULATOR = 'bmi-calculator',
   AGE_CALCULATOR = 'age-calculator',
   UNIT_CONVERTER = 'unit-converter',
+  RANDOM_STRING_GENERATOR = 'random-string-generator'
 }

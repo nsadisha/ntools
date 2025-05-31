@@ -1,0 +1,72 @@
+<div nz-row nzJustify="space-between" [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <div nz-col nzLg="15">
+    <p nz-paragraph>This tool is perfect for generating unique identifiers, slugs, salts, PIN codes, test data, and more.</p>
+    <nz-card>
+      <div nz-col class="w-100">
+        <form [formGroup]="formGroup" (ngSubmit)="generate()" nz-col nzMd="24" nzLg="24" nzXl="24">
+          <nz-row [nzGutter]="[LayoutConfig.ROW_GUTTER, LayoutConfig.ROW_GUTTER]" nzAlign="middle">
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Length: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Length is required">
+                  <nz-input-number formControlName="length" [nzMin]="1" [nzStep]="1" />
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>String Type: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control>
+                  <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select type" formControlName="type">
+                    @for (type of randomStringTypes; track type){
+                      <nz-option [nzLabel]="type.name" [nzValue]="type.type"></nz-option>
+                    }
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+<!--            <nz-col nzXs="24">-->
+<!--              @if (showAdditionalOptions) {-->
+<!--                <h5 nz-typography class="mt-1">Additional Options</h5>-->
+<!--                <nz-collapse nzAccordion>-->
+<!--                  <nz-collapse-panel nzHeader="Including Characters">-->
+<!--                    <nz-form-item>-->
+<!--                      <nz-form-control>-->
+<!--                        <nz-input-number nzPlaceHolder="Ex: abcdefg" formControlName="characters" class="w-100"  />-->
+<!--                      </nz-form-control>-->
+<!--                    </nz-form-item>-->
+<!--                    <small>Note: Only these characters will be used to generate the random string.</small><br/>-->
+<!--                  </nz-collapse-panel>-->
+<!--                </nz-collapse>-->
+<!--              }-->
+<!--            </nz-col>-->
+
+            <nz-col nzXs="24">
+              <div class="d-flex mt-1">
+                <button type="submit" class="ms-auto" nz-button nzType="primary">Generate String</button>
+              </div>
+            </nz-col>
+          </nz-row>
+        </form>
+      </div>
+    </nz-card>
+
+    <div class="mt-1">
+      @if(isFormSubmitted) {
+<!--        <h4 nz-typography>Result:</h4>-->
+
+        <div class="info-card-section">
+          <div class="info-card">
+            <p nz-paragraph nzType="secondary"><strong>Generated string</strong></p>
+            <h4 nz-typography nzCopyable class="d-inline mt-0" [nzContent]="randomString"></h4>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div nz-col nzLg="9">
+    <!--    Serving ads here-->
+  </div>
+</div>

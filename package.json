@@ -21,6 +21,7 @@
     "@types/convert-units": "^2.3.11",
     "appwrite": "^17.0.0",
     "convert-units": "^2.3.4",
+    "crypto-random-string": "^5.0.0",
     "global": "^4.4.0",
     "katex": "^0.16.9",
     "marked": "^12.0.0",
