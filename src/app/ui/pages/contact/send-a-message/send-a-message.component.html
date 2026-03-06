@@ -1,0 +1,49 @@
+<nz-row [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15" nzXl="11">
+    <!-- Contact Us Form -->
+    <nz-card>
+      <div class="form-header-section">
+        <h5 nz-typography class="mb-0 text-primary" nzType="secondary">Get in Touch</h5>
+        <h2 nz-typography class="mt-0">Send Us a Message</h2>
+        <p nz-typography nzType="secondary">Have a question or need assistance? Reach out to us by filling out the contact form below. We're always ready to listen and provide the support you need to make the most out of our tools.</p>
+      </div>
+      <form [formGroup]="contactFormGroup" (ngSubmit)="submitContactUsForm()">
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="contactFormErrorMessages.name">
+            <label><strong>Full name</strong></label>
+            <input nz-input formControlName="name" placeholder="Enter your name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="contactFormErrorMessages.email">
+            <label><strong>Email address</strong></label>
+            <input nz-input formControlName="email" placeholder="Enter your email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="contactFormErrorMessages.message">
+            <label><strong>Message</strong></label>
+            <nz-textarea-count [nzMaxCharacterCount]="maxTextareaLength">
+            <textarea nz-input formControlName="message"
+                      [nzAutosize]="{ minRows: 5, maxRows: 8 }"
+                      placeholder="Enter your message"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div class="d-flex mt-1">
+          <button type="submit" class="ms-auto" nz-button nzType="primary"
+                  [nzLoading]="isContactFormSubmitting">Send Message</button>
+        </div>
+      </form>
+    </nz-card>
+  </nz-col>
+
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="13">
+    <div class="featuring-image">
+      <img alt="send-us-a-message" src="assets/images/send_us_a_message.svg" />
+    </div>
+  </nz-col>
+</nz-row>

@@ -1,0 +1,25 @@
+.form-table {
+  width: 100%;
+
+  tr {
+    td {
+      padding: 0.5rem;
+    }
+
+    td:first-child {
+      width: 50%;
+    }
+
+    td:last-child {
+      width: 50%;
+
+      nz-form-item nz-form-control nz-input-group * {
+        width: 100%;
+      }
+    }
+
+    td button[type="submit"] {
+      float: right;
+    }
+  }
+}

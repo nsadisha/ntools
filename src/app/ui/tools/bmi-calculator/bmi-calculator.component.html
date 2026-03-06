@@ -1,0 +1,86 @@
+<div nz-row nzJustify="space-between" [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <div nz-col nzLg="15">
+    <nz-card>
+      <div nz-col class="w-100">
+        <form [formGroup]="formGroup" (ngSubmit)="calculateBMI()" nz-col nzMd="24" nzLg="24" nzXl="24">
+          <nz-row [nzGutter]="[LayoutConfig.ROW_GUTTER, LayoutConfig.ROW_GUTTER]" nzAlign="middle">
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Age: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Age is required">
+                    <nz-input-number
+                      class="w-100"
+                      formControlName="age"
+                      [nzMin]="2"
+                      [nzMax]="150"
+                      [nzStep]="1" />
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Gender: </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Gender is required">
+                  <nz-select formControlName="gender" class="w-100">
+                    @for(g of genders; track g) {
+                      <nz-option [nzValue]="g.value" [nzLabel]="g.label"></nz-option>
+                    }
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Height (cm): </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Height is required">
+                  <nz-input-number
+                    class="w-100"
+                    formControlName="height"
+                    [nzMin]="1"
+                    [nzMax]="500"
+                    [nzStep]="0.1"
+                    [nzPlaceHolder]="'Height in centimeters'" />
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="12" nzSm="6"><h5 nz-typography>Weight (kg): </h5></nz-col>
+            <nz-col nzXs="12" nzSm="6">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Weight is required">
+                  <nz-input-number
+                    class="w-100"
+                    formControlName="weight"
+                    [nzMin]="1"
+                    [nzMax]="500"
+                    [nzStep]="0.1"
+                    [nzPlaceHolder]="'Weight in kg'" />
+                </nz-form-control>
+              </nz-form-item>
+            </nz-col>
+
+            <nz-col nzXs="24">
+              <div class="d-flex">
+                <button type="submit" class="ms-auto" nz-button nzType="primary">Calculate BMI</button>
+              </div>
+            </nz-col>
+          </nz-row>
+        </form>
+      </div>
+    </nz-card>
+
+    <div class="mt-1">
+      <h4 nz-typography>BMI Introduction</h4>
+      <p nz-paragraph class="text">Body Mass Index (BMI) is a numerical value calculated from a person’s weight and height to determine whether they are underweight, normal weight, overweight, or obese. It is widely used as a quick screening tool to assess if an individual's weight is in a healthy range for their height. A higher BMI might indicate high body fat, which can increase the risk of health issues such as heart disease, diabetes, and hypertension. However, BMI does not measure body fat directly and may not accurately reflect body composition, especially for athletes or muscular individuals. Therefore, it’s often used alongside other health assessments for a more comprehensive evaluation.</p>
+      <app-markdown-display [content]="bmiEquation" />
+      <h4 nz-typography>Ponderal Index</h4>
+      <p nz-typography>The Ponderal Index (PI) is similar to BMI as it assesses a person's leanness or corpulence based on their height and weight. The key difference between PI and BMI lies in the formula—PI cubes the height instead of squaring it. While BMI is useful for analyzing weight status in large populations, it may not accurately reflect leanness or corpulence in individuals, particularly those who are extremely tall or short. In contrast, the PI provides a more reliable measurement for people at the height extremes, as BMI can misrepresent body fat levels in these cases. The equation for calculating the PI is given below.</p>
+      <app-markdown-display [content]="ponderalEquation" />
+    </div>
+  </div>
+  <div nz-col nzLg="9">
+<!--    Serving ads here-->
+  </div>
+</div>

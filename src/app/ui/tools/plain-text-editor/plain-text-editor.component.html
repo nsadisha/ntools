@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <small>
+    <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+    Your text is saved in your browser’s local storage as plain text—avoid entering sensitive information.
+  </small>
+  <nz-textarea-count class="d-block span">
+    <textarea
+      [formControl]="text"
+      placeholder="Enter your text here..."
+      (keyup)="onKeyUp()"
+      nz-input></textarea>
+  </nz-textarea-count>
+</div>

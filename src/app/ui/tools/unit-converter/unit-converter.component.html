@@ -1,0 +1,103 @@
+<div nz-row nzJustify="space-between" [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <div nz-col nzLg="15">
+    <p nz-paragraph>An easy-to-use tool designed to quickly convert between various units of measurement, including length, weight, temperature, volume, and more. Whether you’re working on everyday tasks or scientific calculations, this tool offers fast and accurate conversions to meet your needs.</p>
+    <nz-card>
+      <div nz-col class="w-100">
+        <nz-row [nzGutter]="[LayoutConfig.ROW_GUTTER, LayoutConfig.ROW_GUTTER]" nzAlign="middle" nzJustify="center">
+          <nz-col nzXs="12" nzSm="5"><h5 nz-typography>Measure: </h5></nz-col>
+          <nz-col nzXs="12" nzSm="10">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a measure"
+                           (ngModelChange)="onMeasureChanged($event)"
+                           [(ngModel)]="selectedMeasure">
+                  @for (m of measures; track m.value){
+                    <nz-option [nzLabel]="m.label" [nzValue]="m.value"></nz-option>
+                  }
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </nz-col>
+
+<!--            <nz-col nzXs="24">-->
+<!--              <div class="d-flex mt-1">-->
+<!--                <button type="submit" class="ms-auto" nz-button nzType="primary">Calculate Age</button>-->
+<!--              </div>-->
+<!--            </nz-col>-->
+        </nz-row>
+
+        <form [formGroup]="formGroup" class="mt-1">
+          <nz-row [nzGutter]="[LayoutConfig.ROW_GUTTER, LayoutConfig.ROW_GUTTER]" nzAlign="middle" nzJustify="center">
+            @if(isMeasureSelected) {
+              <nz-col nzXs="24" nzSm="8">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Value is required">
+                    <nz-input-number formControlName="value" nzPlaceHolder="Enter value" class="w-100"></nz-input-number>
+                  </nz-form-control>
+                </nz-form-item>
+              </nz-col>
+              <nz-col nzXs="24" nzSm="8">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="From unit is required">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select from unit"
+                               formControlName="from">
+                      @for (unit of fromUnits; track unit.value){
+                        <nz-option [nzLabel]="unit.label" [nzValue]="unit.value"></nz-option>
+                      }
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </nz-col>
+              <nz-col nzXs="24" nzSm="8">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="To unit is required">
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select to unit" formControlName="to"
+                               nz-tooltip nzTooltipTitle="Please select from unit first."
+                               [nzTooltipTrigger]="isFromUnitSelected ? null : 'hover'"
+                               [nzDisabled]="!isFromUnitSelected">
+                      @for (unit of toUnits; track unit.value){
+                        <nz-option [nzLabel]="unit.label" [nzValue]="unit.value"></nz-option>
+                      }
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </nz-col>
+            }
+          </nz-row>
+        </form>
+
+        @if (isMeasureSelected) {
+          <h5 nz-typography class="mt-1">Additional Options</h5>
+          <nz-collapse nzAccordion>
+            <nz-collapse-panel nzHeader="Round digits" nz-tooltip nzTooltipTitle="Please fill all the fields first."
+                               [nzTooltipTrigger]="isFormGroupValid ? null : 'hover'" [nzDisabled]="!isFormGroupValid">
+              <small>Note: The minimum and maximum rounding digits range from 0 to 15.</small><br/>
+              <nz-input-number nzPlaceHolder="Enter round digits" [(ngModel)]="roundDigits"
+                               (ngModelChange)="validateRoundDigits()"  />
+            </nz-collapse-panel>
+          </nz-collapse>
+        }
+      </div>
+    </nz-card>
+
+    @if (isFormGroupValid) {
+      <h5 nz-typography class="mt-1">Results</h5>
+      <div class="info-card-section mt-0">
+        <div class="info-card">
+          <p nz-paragraph nzType="secondary"><strong>Your result</strong></p>
+          <h3 nz-typography class="mt-0">{{resultString}}</h3>
+        </div>
+        @if (showBestResult) {
+          <div class="info-card">
+            <p nz-paragraph nzType="secondary"><strong>Best conversion</strong></p>
+            <h3 nz-typography class="mt-0">{{bestResultString}}</h3>
+            <p nz-paragraph nzType="secondary"><small>Convert to the most suitable unit with the smallest value above 1.</small></p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+  <div nz-col nzLg="9">
+    <!--    Serving ads here-->
+  </div>
+</div>

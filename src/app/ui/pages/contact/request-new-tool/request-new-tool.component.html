@@ -1,0 +1,56 @@
+<nz-row  [nzGutter]="LayoutConfig.ROW_GUTTER">
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15" nzXl="11">
+    <!-- Request New Tool -->
+    <nz-card>
+      <div class="form-header-section">
+        <h5 nz-typography class="mb-0 text-primary" nzType="secondary">Help Us Innovate!</h5>
+        <h2 nz-typography class="mt-0">Request a New Tool</h2>
+        <p nz-typography nzType="secondary">Is there a tool you’d love to see added to our collection? Share your ideas with us! Fill out the form below to submit your request for a new tool type, and we'll consider it for future updates.</p>
+      </div>
+      <form [formGroup]="newToolFormGroup" (ngSubmit)="submitNewToolRequestForm()">
+        <nz-form-item>
+          <nz-form-control [nzErrorTip]="newToolFormErrorMessages.name">
+            <label><strong>Full name</strong></label>
+            <input nz-input formControlName="name" placeholder="Enter your name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="newToolFormErrorMessages.email">
+            <label><strong>Email address</strong></label>
+            <input nz-input formControlName="email" placeholder="Enter your email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="newToolFormErrorMessages.toolName">
+            <label><strong>Tool name</strong></label>
+            <input nz-input formControlName="toolName" placeholder="Give a name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mt-1">
+          <nz-form-control [nzErrorTip]="newToolFormErrorMessages.toolDescription">
+            <label><strong>Tool description</strong></label>
+            <nz-textarea-count [nzMaxCharacterCount]="maxTextareaLength">
+            <textarea nz-input formControlName="toolDescription"
+                      [nzAutosize]="{ minRows: 5, maxRows: 8 }"
+                      placeholder="Describe your tool"></textarea>
+            </nz-textarea-count>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div class="d-flex mt-1">
+          <button type="submit" class="ms-auto" nz-button nzType="primary"
+                  [nzLoading]="isNewToolFormSubmitting">Request Tool</button>
+        </div>
+      </form>
+    </nz-card>
+  </nz-col>
+
+  <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="13">
+    <div class="featuring-image">
+      <img alt="request-a-new-tool" src="assets/images/request_a_new_tool.svg" />
+    </div>
+  </nz-col>
+</nz-row>

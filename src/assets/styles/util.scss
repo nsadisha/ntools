@@ -1,0 +1,64 @@
+// Layout
+.d-flex {
+  display: flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+.span {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  height: inherit;
+}
+
+// Align
+.justify-content-center {
+  justify-content: center;
+}
+
+// Spacing
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mt-1 {
+  margin-top: 1rem !important;
+}
+.ms-auto {
+  margin-left: auto;
+}
+
+// Size
+.h-inherit {
+  height: inherit;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
+// Rotate
+.ry-180 {
+  transform: rotateY(180deg);
+}
+
+
+// Background - for testing
+.bg-red {
+  background-color: red;
+}

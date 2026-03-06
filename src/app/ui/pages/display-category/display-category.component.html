@@ -1,0 +1,25 @@
+<div nz-row nzJustify="center" style="gap: 2rem;">
+  @if(category == undefined){
+    <nz-result nzStatus="404" nzTitle="404" nzSubTitle="Sorry, the category you are looking for does not exist.">
+      <div nz-result-extra class="not-found-extra-section">
+        <button nz-button nzType="primary" routerLink="/categories">All Categories</button>
+      </div>
+    </nz-result>
+  } @else if (tools.length > 0) {
+    <div nz-col nzSpan="24">
+      <div nz-row [nzGutter]="[15, 15]">
+        @for(t of tools; track t) {
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" nzXXl="4">
+            <app-tool-display-card [tool]="t" />
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <div nz-col nzSpan="24">
+      <nz-empty nzNotFoundContent="No tools found in this category." />
+    </div>
+  }
+
+
+</div>

@@ -1,0 +1,20 @@
+<nz-tabset nzCentered class="h-inherit" [(nzSelectedIndex)]="currentTabIndex">
+  <nz-tab nzTitle="Preview">
+    <app-markdown-display [content]="markdownContent" [renderMermaidManually]="renderMermaidManually" />
+  </nz-tab>
+  <nz-tab nzTitle="Edit Content" class="h-inherit d-flex">
+    <div class="wrapper">
+      <small>
+        <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+        Your text is saved in your browser’s local storage as plain text—avoid entering sensitive information.
+        <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">Markdown Cheat Sheet</a>
+      </small>
+      <textarea class="span d-flex"
+                rows="15"
+                [formControl]="markdown"
+                placeholder="Type here..."
+                (keyup)="onKeyUp()"
+                nz-input></textarea>
+    </div>
+  </nz-tab>
+</nz-tabset>

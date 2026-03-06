@@ -1,0 +1,44 @@
+<nz-row nzJustify="center">
+  <nz-col>
+<!--    <div class="gauge-wrapper">-->
+      <ngx-gauge [type]="'arch'"
+                 [value]="bmi"
+                 [label]="bmiConfig.label"
+                 [size]="bmiConfig.size"
+                 [min]="bmiConfig.min"
+                 [max]="bmiConfig.max"
+                 [thick]="bmiConfig.thickness"
+                 [cap]="'round'"
+                 [markers]="bmiMarkerConfig.adultMen"
+                 [foregroundColor]="bmiConfig.foregroundColor"
+                 [duration]="bmiConfig.duration"
+                 [thresholds]="bmiConfig.thresholds"
+                 [append]="bmiConfig.gaugeAppendText">
+      </ngx-gauge>
+<!--    </div>-->
+  </nz-col>
+  <nz-col nzSm="24">
+    <div class="info-card-section">
+      <div class="row">
+        <div class="info-card">
+          <h5 nz-typography>BMI Category</h5>
+          <p nz-typography nzType="secondary">{{data.bmiCategory}}</p>
+        </div>
+        <div class="info-card">
+          <h5 nz-typography>Ponderal Index</h5>
+          <p nz-typography nzType="secondary">{{toFixed(data.ponderalIndex)}}{{data.ponderalUnit}}</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <h5 nz-typography>Healthy BMI range</h5>
+        <p nz-typography nzType="secondary">Healthy BMI range is from {{toFixed(data.healthyRange.start)}}{{data.unit}} to {{toFixed(data.healthyRange.end)}}{{data.unit}}.</p>
+      </div>
+      <div class="info-card">
+        <h5 nz-typography>Healthy Weight range</h5>
+        <p nz-typography nzType="secondary">Considering your height, You should maintain your weight between {{toFixed(data.healthyWeightRange.start)}}kg and {{toFixed(data.healthyWeightRange.end)}}kg.</p>
+      </div>
+    </div>
+  </nz-col>
+</nz-row>
+
+
