@@ -357,9 +357,17 @@ h4.ant-typography, h5.ant-typography {
 // Page header
 // =====================================================================
 .ant-page-header {
-  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: var(--card);
 
   .ant-page-header-heading-title {
+    color: var(--foreground);
+  }
+
+  // Baked to #000 in Ant's default theme — invisible on a dark header.
+  .ant-page-header-back-button {
     color: var(--foreground);
   }
 

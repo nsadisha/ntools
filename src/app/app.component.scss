@@ -87,6 +87,11 @@ nz-header {
 
 .app-header {
   position: relative;
+  display: flex;
+  // No align-items override — default `stretch` makes nz-page-header fill
+  // the full 64px (matching this box's background/height exactly); the
+  // page-header's own content is centered separately, see
+  // .ant-page-header in ant-theme-customize.scss.
   height: 64px;
   padding: 0;
   background: var(--card);
