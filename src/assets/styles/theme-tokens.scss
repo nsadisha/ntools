@@ -37,7 +37,12 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --background: oklch(1 0 0);
+  // --background is a distinct, subtle off-white "canvas" tone (the oklch
+  // equivalent of Ant's original #f0f2f5 layout background) — --card stays
+  // pure white so surfaces like nz-content vs .inner-content/app-header
+  // read as a deliberate canvas/card layering, matching the analogous
+  // (already-present) relationship in dark mode.
+  --background: oklch(0.97 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
