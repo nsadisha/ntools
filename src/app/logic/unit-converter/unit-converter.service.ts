@@ -29,4 +29,16 @@ export class UnitConverterService {
   convertToBest(value: number, from: Unit) {
     return convert(value).from(from).toBest();
   }
+
+  formatResult(value: number, from: string, to: string | null | undefined, result: number, roundDigits: number): string {
+    return value + " " + from + " = " + result.toFixed(roundDigits) + " " + to;
+  }
+
+  formatBestResult(value: number, from: string, bestResult: { val: number; unit: string } | null): string {
+    return value + " " + from + " = " + bestResult?.val + " " + bestResult?.unit;
+  }
+
+  shouldShowBestResult(to: string | null | undefined, bestResult: { val: number; unit: string } | null): boolean {
+    return bestResult != null && to !== bestResult.unit;
+  }
 }

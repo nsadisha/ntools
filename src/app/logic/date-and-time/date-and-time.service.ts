@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {DateDifferenceModel} from "../../model/date-time.model";
 import {DateTimeConstants} from "../../util/constants.util";
+import {firstLetterToUpperCase} from "../../util/string.util";
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,21 @@ export class DateAndTimeService {
       { seconds: Math.floor(diffInDays * DAY_TO_SECONDS) },
       { milliseconds: Math.floor(diffInDays * DAY_TO_MILLISECONDS) }
     ];
+  }
+
+  public formatDateDifference(result: Partial<DateDifferenceModel>): string {
+    const keys = Object.keys(result) as (keyof DateDifferenceModel)[];
+
+    return keys
+      .map((key): string => {
+        const value: number = result[key]!;
+        if (value !== undefined && value !== 0) {
+          return value + " " + firstLetterToUpperCase(key);
+        }
+
+        return "";
+      })
+      .filter(str => str.length > 0)
+      .join(", ");
   }
 }
