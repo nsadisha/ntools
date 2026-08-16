@@ -1,23 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { ToolNotFoundComponent } from './tool-not-found.component';
+import { overrideAsShallow } from '../../../testing/shallow';
 
 describe('ToolNotFoundComponent', () => {
-  let component: ToolNotFoundComponent;
-  let fixture: ComponentFixture<ToolNotFoundComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ToolNotFoundComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ToolNotFoundComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    overrideAsShallow(ToolNotFoundComponent);
+    TestBed.configureTestingModule({ imports: [ToolNotFoundComponent] });
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(ToolNotFoundComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
