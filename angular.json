@@ -116,7 +116,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
@@ -125,7 +126,10 @@
               "src/**/*.config.ts",
               "src/main.ts",
               "src/polyfills.ts",
-              "src/environments/**"
+              "src/environments/**",
+              "src/app/app.routes.ts",
+              "src/app/icons-provider.ts",
+              "src/app/service/local-storage/local-storage-keys.ts"
             ],
             "inlineStyleLanguage": "scss",
             "assets": [
