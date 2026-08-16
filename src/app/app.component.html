@@ -38,7 +38,7 @@
           </ul>
         </li>
       </ul>
-      <button type="button" class="theme-toggle" (click)="themeService.toggle()"
+      <button type="button" class="theme-toggle" [class.collapsed]="isCollapsed" (click)="themeService.toggle()"
               [attr.aria-label]="themeService.resolvedTheme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
         <span nz-icon [nzType]="themeService.resolvedTheme() === 'dark' ? 'sun' : 'moon'" nzTheme="outline"></span>
         @if (!isCollapsed) {
