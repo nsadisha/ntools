@@ -1,35 +1,65 @@
-<section nz-row nzJustify="center">
-  <div nz-col nzSpan="24" class="d-flex justify-content-center">
-    <img src="../../../../assets/images/ntools_logo_dark_v.svg" alt="ntools_logo" width="200px" />
+<section class="home">
+  <!-- Hero -->
+  <div nz-row nzJustify="center" class="hero">
+    <div nz-col nzSpan="24" class="d-flex justify-content-center">
+      <img [src]="logoSrc" alt="Ntools logo" width="200px" />
+    </div>
+    <h1 nz-typography class="mt-1 text-center">Your Ultimate Toolkit for Everyday Tasks!</h1>
+    <p nz-typography nzType="secondary" class="hero-subhead text-center">
+      One platform, {{ toolCount }} free tools — no downloads, no sign-ups, just open and go.
+    </p>
+    <div nz-col nzSpan="24" class="hero-actions">
+      <button nz-button nzType="primary" nzSize="large" routerLink="/tools">
+        <span nz-icon nzType="search"></span> Browse Tools
+      </button>
+      <button nz-button nzType="default" nzSize="large" routerLink="/categories">
+        <span nz-icon nzType="appstore"></span> View Categories
+      </button>
+    </div>
   </div>
-  <h1 nz-typography class="mt-1 text-center">Your Ultimate Toolkit for Everyday Tasks!</h1>
 
-  <div nz-col nzSpan="24" class="d-flex justify-content-center mt-1">
-    <button nz-button nzType="primary" [nzSize]="'large'" routerLink="/tools">
-      <span nz-icon nzType="search"></span> Browse Tools
+  <!-- Live stats -->
+  <div class="info-card-section stats-section">
+    <div class="row">
+      <div class="info-card stat-card">
+        <span class="stat-value">{{ toolCount }}</span>
+        <span class="stat-label">Tools</span>
+      </div>
+      <div class="info-card stat-card">
+        <span class="stat-value">{{ categoryCount }}</span>
+        <span class="stat-label">Categories</span>
+      </div>
+      <div class="info-card stat-card">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Free</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features-section">
+    <h3 nz-typography>Why Choose Ntools?</h3>
+    <div nz-row [nzGutter]="[16, 16]">
+      @for (feature of features; track feature.title) {
+        <div nz-col nzXs="24" nzSm="12" nzLg="6">
+          <div class="feature-card">
+            <span class="feature-icon">
+              <span nz-icon [nzType]="feature.icon"></span>
+            </span>
+            <h5 nz-typography>{{ feature.title }}</h5>
+            <p nz-typography nzType="secondary">{{ feature.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Closing CTA -->
+  <div class="cta-band">
+    <h3 nz-typography>Ready to get started?</h3>
+    <p nz-typography nzType="secondary">Jump in and put Ntools to work — it only takes a click.</p>
+    <button nz-button nzType="primary" nzSize="large" routerLink="/tools">
+      Get Started <span nz-icon nzType="arrow-right"></span>
     </button>
   </div>
-
-  <div nz-col nzSpan="24" class="mt-1">
-    <h3 nz-typography>All the Tools You Need, in One Place!</h3>
-    <p nz-typography>Tired of switching between multiple apps for simple tasks? Ntools is your all-in-one solution, bringing together a variety of essential tools to make your daily life easier. Whether it’s productivity, utilities, calculations, or organization, Ntools streamlines everything into a single, user-friendly platform. Simplify, save time, and get more done with Ntools!</p>
-  </div>
-
-  <div nz-col nzSpan="24" class="mt-1">
-    <h3 nz-typography>Why Choose Ntools?</h3>
-    <p nz-typography>✅ <strong>One Platform, Multiple Tools</strong> – From productivity to utilities, everything you need is just a click away.</p>
-    <p nz-typography>✅ <strong>Time-Saving & Convenient</strong> – No more downloading separate apps. Ntools keeps it all in one place.</p>
-    <p nz-typography>✅ <strong>User-Friendly & Intuitive</strong> – Designed for ease of use, so anyone can access the tools effortlessly.</p>
-    <p nz-typography>✅ <strong>Free & Accessible</strong> – No hidden costs, just simple and effective tools at your fingertips.</p>
-  </div>
-
-  <div nz-col nzSpan="24" class="mt-1">
-    <h3 nz-typography>Ready to Experience the Future of Everyday Tools?</h3>
-    <p nz-typography>With <strong>Ntools</strong>, everything you need is just one click away. No more searching, no more switching—just one powerful platform for all your tasks!</p>
-    <a routerLink="/tools">👉 <strong>Get Started Today & Experience the Ease of Ntools!</strong></a>
-  </div>
-
-<!--  <button nz-button nzType="primary" [nzSize]="'large'" routerLink="/all">-->
-<!--    <span nz-icon nzType="search"></span> Browse Tools-->
-<!--  </button>-->
 </section>
