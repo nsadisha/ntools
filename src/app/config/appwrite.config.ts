@@ -1,5 +1,5 @@
 import {Client, Databases} from "appwrite";
-import {environment} from "../../environments/environment";
+import {environment} from "../../environment/environment";
 
 // Appwrite
 export const APPWRITE_DB_ID = environment.APPWRITE_DB_ID;

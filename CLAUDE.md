@@ -18,9 +18,10 @@ Follow them for new code and for any existing file you modify. Run
 ## Commands
 
 - `npm start` / `ng serve` — dev server at `http://localhost:4200/`, auto-reloads on change.
-- `ng build` — production build, output to `dist/ntools`. Uses `environment.prod.ts` (see Environments below).
-- `ng build --configuration development` (or `npm run watch` for watch mode) — dev build using `environment.dev.ts`.
+- `ng build` — production build, output to `dist/ntools`.
+- `ng build --configuration development` (or `npm run watch` for watch mode) — dev build.
 - `ng test` — run unit tests via Karma/Jasmine.
+- `npm run test:scripts` — run the `scripts/` tooling's own tests via Node's built-in `node:test` (separate from Karma; see Environment variables below).
 - `ng test --include='**/tool.service.spec.ts'` — run a single spec file.
 - `ng generate component ui/tools/my-tool` (or `directive|pipe|service|class|guard|interface|enum`) — scaffold using the project's schematics defaults (standalone components, SCSS styles).
 
@@ -79,9 +80,12 @@ for tools/categories, it's all static in-repo config.
 
 - **Appwrite** (`appwrite` SDK) is the backend for the Contact Us flows (send message / report bug / request
   tool). Config lives in `src/app/config/appwrite.config.ts`, reading endpoint/project/db/collection IDs
-  from `src/environments/environment.ts`. These are populated via environment file replacement
-  (`fileReplacements` in `angular.json`) between `environment.dev.ts` and `environment.prod.ts` — the
-  checked-in `environment.ts` itself is a blank template.
+  from `src/environment/environment.ts`. That file is **generated, not committed** — `scripts/generate-environment.js`
+  reads `.env` (via `dotenv`) and writes it, run automatically via `postinstall`/`prestart`/`prebuild`/
+  `prewatch`/`pretest` npm hooks. Copy `.env.example` to `.env` locally with real values; production
+  (Netlify) supplies the same 6 keys as real environment variables in its dashboard, never via a file in
+  the repo. `scripts/generate-environment.test.js` tests the script's pure logic via Node's built-in
+  `node:test` — deliberately outside the Karma/`ng test` pipeline (see `.guidelines/engineering-guidelines.md`).
 - **ng-zorro-antd** is the UI component library used throughout; icons are registered centrally in
   `src/app/icons-provider.ts`.
 - **ngx-markdown** + **marked**, with **KaTeX** (math) and **Mermaid** (diagrams) and **PrismJS**

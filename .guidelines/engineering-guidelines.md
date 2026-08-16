@@ -116,6 +116,16 @@ of forward-looking recommendations:
 - Utilities in `util/` are pure functions — they have no excuse for
   being under-tested; every branch (including edge cases like empty
   strings, null, boundary numbers) should be covered.
+- **Repo-tooling scripts** (Node-context build/dev scripts under
+  `scripts/`, outside `src/app/`) are not part of the Karma coverage
+  bar — a browser test runner can't meaningfully exercise a Node
+  fs-writing script, and `tsconfig.spec.json`/`codeCoverageExclude`
+  don't reach outside `src/`. That's not a free pass on testing: split
+  out any real logic into a pure, dependency-free function and test it
+  with Node's built-in `node:test`/`node:assert` (no new dependency),
+  run via a script's own `npm run test:scripts`-style command, separate
+  from `ng test`. See `scripts/generate-environment.js` +
+  `scripts/generate-environment.test.js` for the pattern.
 
 ## 7. Commit workflow
 

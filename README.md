@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
+## Environment setup
+
+Copy `.env.example` to `.env` and fill in the values from your Appwrite
+console (Project Settings, and Database → Collections for the collection
+IDs):
+
+```
+cp .env.example .env
+```
+
+`npm install`, `npm start`, `npm run build`, `npm run watch`, and
+`npm test` all regenerate `src/environment/environment.ts` from `.env`
+automatically before running — you never edit that file directly.
+Production deployments (Netlify) read the same 6 keys from real
+environment variables set in the site's dashboard, not from a committed
+file.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
