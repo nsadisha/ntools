@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { ToolDisplayCardComponent } from './tool-display-card.component';
+import { overrideAsShallow } from '../../../testing/shallow';
+import { Tool, ToolType } from '../../../model/tool.model';
+import { CategoryType } from '../../../model/category.model';
+import { ToolNotFoundComponent } from '../../tools/tool-not-found/tool-not-found.component';
 
 describe('ToolDisplayCardComponent', () => {
-  let component: ToolDisplayCardComponent;
-  let fixture: ComponentFixture<ToolDisplayCardComponent>;
+  it('should render the bound tool', () => {
+    overrideAsShallow(ToolDisplayCardComponent);
+    TestBed.configureTestingModule({ imports: [ToolDisplayCardComponent] });
+    const fixture = TestBed.createComponent(ToolDisplayCardComponent);
+    const tool: Tool = {
+      id: 1,
+      name: 'Test Tool',
+      description: 'A tool for testing',
+      toolCode: ToolType.PLAIN_TEXT_EDITOR,
+      category: CategoryType.TEXT_EDITOR,
+      component: ToolNotFoundComponent,
+    };
+    fixture.componentInstance.tool = tool;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ToolDisplayCardComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ToolDisplayCardComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance.tool).toBe(tool);
   });
 });

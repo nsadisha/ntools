@@ -129,7 +129,8 @@
               "src/environments/**",
               "src/app/app.routes.ts",
               "src/app/icons-provider.ts",
-              "src/app/service/local-storage/local-storage-keys.ts"
+              "src/app/service/local-storage/local-storage-keys.ts",
+              "src/app/testing/**"
             ],
             "inlineStyleLanguage": "scss",
             "assets": [
