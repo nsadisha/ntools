@@ -119,6 +119,14 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "codeCoverageExclude": [
+              "src/**/*.model.ts",
+              "src/**/*.config.ts",
+              "src/main.ts",
+              "src/polyfills.ts",
+              "src/environments/**"
+            ],
             "inlineStyleLanguage": "scss",
             "assets": [
               {

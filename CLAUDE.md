@@ -7,6 +7,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Ntools is an Angular 18 single-page app: a collection of small standalone utility tools (text editors,
 calculators, converters, generators) organized into categories, deployed to Netlify.
 
+## Engineering guidelines
+
+Coding standards (file placement/naming, separation of concerns, Angular
+patterns, and a per-file test coverage bar) are defined in
+[.guidelines/engineering-guidelines.md](.guidelines/engineering-guidelines.md).
+Follow them for new code and for any existing file you modify. Run
+`ng test --no-watch --code-coverage` before committing.
+
 ## Commands
 
 - `npm start` / `ng serve` — dev server at `http://localhost:4200/`, auto-reloads on change.
