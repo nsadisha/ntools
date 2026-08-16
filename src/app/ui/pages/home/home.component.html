@@ -4,10 +4,12 @@
     <div nz-col nzSpan="24" class="d-flex justify-content-center">
       <img [src]="logoSrc" alt="Ntools logo" width="200px" />
     </div>
-    <h1 nz-typography class="mt-1 text-center">Your Ultimate Toolkit for Everyday Tasks!</h1>
-    <p nz-typography nzType="secondary" class="hero-subhead text-center">
-      One platform, {{ toolCount }} free tools — no downloads, no sign-ups, just open and go.
-    </p>
+    <div nz-col nzSpan="24">
+      <h1 nz-typography class="mt-1 text-center">Your Ultimate Toolkit for Everyday Tasks!</h1>
+      <p nz-typography nzType="secondary" class="hero-subhead text-center">
+        One platform, {{ toolCount }} free tools — no downloads, no sign-ups, just open and go.
+      </p>
+    </div>
     <div nz-col nzSpan="24" class="hero-actions">
       <button nz-button nzType="primary" nzSize="large" routerLink="/tools">
         <span nz-icon nzType="search"></span> Browse Tools
