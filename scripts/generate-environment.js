@@ -38,6 +38,7 @@ function buildEnvironmentFileContent(env, keys) {
 function main() {
   dotenv.config();
   const content = buildEnvironmentFileContent(process.env, REQUIRED_KEYS);
+  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, content);
 }
 
