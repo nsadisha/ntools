@@ -1,10 +1,10 @@
 # Ntools Engineering Guidelines
 
 These are the coding standards for this repository. They apply to **new
-code, and to any existing file you modify** — the current codebase does
-not yet fully conform (see [Migration note](#8-migration-note)), and that
-gap is being closed in a dedicated follow-up commit, not piecemeal inside
-unrelated changes.
+code, and to any existing file you modify**. The codebase-wide test
+coverage migration referenced below is complete (see
+[Migration note](#8-migration-note-resolved)) — the 85%/file bar is a
+live, enforced gate, not just documented policy.
 
 ## 1. Purpose & scope
 
@@ -110,9 +110,9 @@ of forward-looking recommendations:
   excluded from the coverage check (see `angular.json`'s
   `codeCoverageExclude`) — they're pure types/static data with nothing
   to branch-cover.
-- If you modify an existing file that has no meaningful tests (most of
-  this codebase, today — see §8), **add them as part of that change**.
-  Don't leave a file you just touched below the bar.
+- If you modify an existing file and its tests fall below the bar as a
+  result, **bring them back up as part of that change**. Don't leave a
+  file you just touched below the bar.
 - Utilities in `util/` are pure functions — they have no excuse for
   being under-tested; every branch (including edge cases like empty
   strings, null, boundary numbers) should be covered.
@@ -125,36 +125,36 @@ Before committing:
 2. `ng test --no-watch --code-coverage` — confirms new/changed files meet
    the 85% per-file bar.
 
-## 8. Migration note
+## 8. Migration note (resolved)
 
-As of the introduction of this document, the existing codebase does
-**not** meet these standards — most spec files are Angular CLI's default
-placeholder tests, and `util/*.util.ts` plus a few services have no
-tests at all. `ng test --no-watch --code-coverage` will fail today
-(overall: ~20% statements, ~8% branches, ~8% functions, ~18% lines —
-verified when this document and the coverage check were introduced).
-This is expected: the gap is being closed in a dedicated follow-up
-commit that brings the existing codebase up to this bar, not folded
-into unrelated feature work. Until that lands, only the files you
-actually touch are held to this standard.
+The codebase originally did **not** meet these standards — most spec
+files were Angular CLI's default placeholder tests, and `util/*.util.ts`
+plus a few services had no tests at all (overall: ~20% statements, ~8%
+branches, ~8% functions, ~18% lines when this document and the coverage
+check were introduced). That gap has since been closed in a dedicated
+migration (four phases: test-infra fixes + `util/`; `service/`/`logic/`/
+`api/`; a small extraction of two components' inline calculation logic
+into their matching `logic/` services per §4; then every remaining
+component, in easiest-to-hardest order). `ng test --no-watch
+--code-coverage` now exits 0 for the whole codebase (99.78% statements,
+100% branches, 100% functions, 99.77% lines) — the `check.each` gate is
+live and green, not just documented policy.
 
-Two specific pre-existing issues surfaced while verifying the coverage
-check (previously masked by an unrelated compile error that blocked the
-suite before it could even run) are worth flagging for that commit:
+The two pre-existing test-infra bugs flagged in the original version of
+this note are both fixed:
 
-- `app.component.spec.ts`'s `AppComponent` test fails at runtime —
-  `NullInjectorError: No provider for ActivatedRoute` — because
-  `RouteDataService` (injected by `AppComponent`) depends on
-  `ActivatedRoute`, which isn't provided in that spec's `TestBed`.
-- The suite throws `ReferenceError: global is not defined` in an
-  `afterAll` hook, originating from `convert-units`' `lodash.foreach`
-  dependency chain — a Node global expected in a browser test
-  environment. Likely fixable with a `global` shim in `src/polyfills.ts`.
+- `app.component.spec.ts` now provides `provideRouter([])` so
+  `RouteDataService`'s `Router`/`ActivatedRoute` dependencies resolve,
+  and has a real (non-placeholder) spec.
+- `angular.json`'s `test` target's `polyfills` array now includes
+  `src/polyfills.ts` (it was previously only in the `build` target),
+  so the existing `global` shim actually loads under Karma and
+  `convert-units` no longer throws.
 
 ## Future enhancement (not built yet)
 
 A git-diff-aware coverage check (comparing changed files against a
 coverage report, rather than a global per-file threshold) would more
-precisely enforce "every *new* file" without the current codebase's debt
-tripping the check on unrelated work. Worth revisiting once the
-migration commit lands and the karma threshold is passing cleanly.
+precisely enforce "every *new* file" independent of whether the whole
+suite happens to be green. Not necessary now that the full-suite gate
+passes cleanly, but worth revisiting if that ever regresses at scale.
