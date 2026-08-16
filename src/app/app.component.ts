@@ -9,6 +9,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import {NzPageHeaderComponent} from "ng-zorro-antd/page-header";
 import {RouteDataService} from "./service/route-data/route-data.service";
+import {ThemeService} from "./service/theme/theme.service";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent {
   protected back: string | null = null;
   protected url: string = "";
 
-  constructor(private routeDataService: RouteDataService) {
+  constructor(private routeDataService: RouteDataService, protected themeService: ThemeService) {
     this.routeDataService.data$.subscribe(data => {
       this.title = data.title || '';
       this.subtitle = data.subtitle || '';

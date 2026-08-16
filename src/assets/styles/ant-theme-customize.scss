@@ -1,4 +1,241 @@
+// =====================================================================
+// Global base
+// =====================================================================
+html {
+  font-family: var(--font-sans);
+}
 
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+// shadcn-style tight focus ring (ring + offset) everywhere, replacing
+// Ant's default glow box-shadow.
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-input-number:focus,
+.ant-input-number-focused,
+.ant-select-focused:not(.ant-select-disabled) .ant-select-selector,
+.ant-picker-focused,
+.ant-btn:focus-visible,
+.ant-checkbox-input:focus + .ant-checkbox-inner,
+.ant-radio-input:focus + .ant-radio-inner {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+// =====================================================================
+// Buttons
+// =====================================================================
+.ant-btn {
+  border-radius: var(--radius-md);
+  border-color: var(--border);
+  box-shadow: none;
+  font-weight: 500;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover, &:focus {
+    color: var(--foreground);
+    border-color: var(--ring);
+  }
+}
+
+.ant-btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+
+  &:hover, &:focus {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    opacity: 0.9;
+    color: var(--primary-foreground);
+  }
+}
+
+.ant-btn-default {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.ant-btn-dangerous {
+  background-color: transparent;
+  border-color: var(--destructive);
+  color: var(--destructive);
+
+  &.ant-btn-primary {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+  }
+}
+
+.ant-btn-link {
+  color: var(--primary);
+}
+
+// =====================================================================
+// Forms / inputs
+// =====================================================================
+.ant-form-item-label > label {
+  color: var(--foreground);
+}
+
+.ant-form-item-explain-error {
+  color: var(--destructive);
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-number,
+.ant-picker,
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: var(--background);
+  border-color: var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+}
+
+.ant-input::placeholder,
+.ant-input-number-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.ant-input-group-addon {
+  background-color: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+
+// =====================================================================
+// Select / Autocomplete dropdowns
+// =====================================================================
+.ant-select-dropdown {
+  background-color: var(--popover);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 10%);
+  border: 1px solid var(--border);
+}
+
+.ant-select-item {
+  color: var(--popover-foreground);
+
+  &-option-active:not(.ant-select-item-option-disabled) {
+    background-color: var(--accent);
+  }
+
+  &-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    font-weight: 500;
+  }
+}
+
+// =====================================================================
+// Date picker panel
+// =====================================================================
+.ant-picker-dropdown {
+  .ant-picker-panel-container {
+    background-color: var(--popover);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px oklch(0 0 0 / 10%);
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .ant-picker-today-btn {
+    color: var(--primary);
+  }
+}
+
+// =====================================================================
+// Card
+// =====================================================================
+.ant-card {
+  background-color: var(--card);
+  border-color: var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  color: var(--card-foreground);
+}
+
+.ant-card-head {
+  border-color: var(--border);
+  color: var(--card-foreground);
+}
+
+// =====================================================================
+// Typography
+// =====================================================================
+.ant-typography {
+  color: var(--foreground);
+}
+
+// =====================================================================
+// Result / Empty
+// =====================================================================
+.ant-result-title {
+  color: var(--foreground);
+}
+
+.ant-result-subtitle {
+  color: var(--muted-foreground);
+}
+
+.ant-empty-description {
+  color: var(--muted-foreground);
+}
+
+// =====================================================================
+// Collapse
+// =====================================================================
+.ant-collapse {
+  background-color: var(--card);
+  border-color: var(--border);
+  border-radius: var(--radius-md);
+
+  > .ant-collapse-item {
+    border-color: var(--border);
+
+    > .ant-collapse-header {
+      color: var(--foreground);
+    }
+  }
+
+  .ant-collapse-content {
+    background-color: var(--card);
+    border-color: var(--border);
+    color: var(--card-foreground);
+  }
+}
+
+// =====================================================================
+// Tooltip
+// =====================================================================
+.ant-tooltip-inner {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 12%);
+}
+
+.ant-tooltip-arrow-content {
+  background-color: var(--popover);
+}
+
+// =====================================================================
+// Tabs
+// =====================================================================
 .ant-tabs {
   .ant-tabs-content-holder {
     display: flex;
@@ -20,6 +257,99 @@
   }
 }
 
+.ant-tabs-tab {
+  color: var(--muted-foreground);
+
+  &.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--primary);
+  }
+}
+
+.ant-tabs-ink-bar {
+  background-color: var(--primary);
+}
+
+.ant-tabs-nav::before {
+  border-color: var(--border);
+}
+
+// =====================================================================
+// Modal (NzModalService — bmi-result-popup)
+// =====================================================================
+.ant-modal-content {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px oklch(0 0 0 / 15%);
+}
+
+.ant-modal-header {
+  background-color: var(--card);
+  border-color: var(--border);
+}
+
+.ant-modal-title {
+  color: var(--card-foreground);
+}
+
+.ant-modal-close {
+  color: var(--muted-foreground);
+}
+
+// =====================================================================
+// Page header
+// =====================================================================
+.ant-page-header {
+  background-color: var(--background);
+
+  .ant-page-header-heading-title {
+    color: var(--foreground);
+  }
+
+  .ant-page-header-heading-sub-title {
+    color: var(--muted-foreground);
+  }
+}
+
+// =====================================================================
+// Sidebar / dark menu (nzTheme="dark" on nz-sider / nz-menu)
+// =====================================================================
+.ant-layout-sider-dark,
+.ant-menu-dark {
+  background-color: var(--sidebar) !important;
+}
+
+.ant-menu-dark .ant-menu-item,
+.ant-menu-dark .ant-menu-submenu-title {
+  color: var(--sidebar-foreground);
+
+  &:hover {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-accent-foreground);
+  }
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: var(--sidebar-primary) !important;
+  color: var(--sidebar-primary-foreground) !important;
+}
+
+.ant-menu-dark.ant-menu-inline .ant-menu-item::after {
+  border-color: var(--sidebar-primary);
+}
+
+.ant-menu-dark .ant-menu-submenu-arrow {
+  color: var(--sidebar-foreground);
+}
+
+.ant-layout-sider-trigger {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+  border-top: 1px solid var(--sidebar-border);
+}
+
+// =====================================================================
+// Misc
+// =====================================================================
 .not-found-extra-section {
   display: flex;
   justify-content: center;

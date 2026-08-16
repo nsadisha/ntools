@@ -6,6 +6,18 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Applies the persisted/system theme before first paint, avoiding a
+    // flash of the wrong theme. Keep the 'theme-mode' key in sync with
+    // LocalStorageKeys.THEME_MODE (src/app/service/local-storage/local-storage-keys.ts).
+    (function () {
+      var stored = localStorage.getItem('theme-mode');
+      var resolved = stored === 'light' || stored === 'dark'
+        ? stored
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', resolved);
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>
