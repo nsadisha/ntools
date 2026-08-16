@@ -38,13 +38,13 @@
           </ul>
         </li>
       </ul>
-<!--      <span class="header-trigger" (click)="isCollapsed = !isCollapsed">-->
-<!--        <span class="trigger"-->
-<!--              nz-icon-->
-<!--              nzType="left"-->
-<!--              [class.rotated]="isCollapsed"-->
-<!--        ></span>-->
-<!--      </span>-->
+      <button type="button" class="theme-toggle" (click)="themeService.toggle()"
+              [attr.aria-label]="themeService.resolvedTheme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+        <span nz-icon [nzType]="themeService.resolvedTheme() === 'dark' ? 'sun' : 'moon'" nzTheme="outline"></span>
+        @if (!isCollapsed) {
+          <span>{{ themeService.resolvedTheme() === 'dark' ? 'Light mode' : 'Dark mode' }}</span>
+        }
+      </button>
     </div>
   </nz-sider>
   <nz-layout>

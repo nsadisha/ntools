@@ -12,8 +12,8 @@
 }
 // colors
 .text-primary {
-  color: #1890ff !important;
+  color: var(--primary) !important;
 }
 .text-secondary {
-  color: #00000073 !important;
+  color: var(--muted-foreground) !important;
 }

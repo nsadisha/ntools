@@ -1,7 +1,23 @@
 
 // Custom Theming for NG-ZORRO
 // For more information: https://ng.ant.design/docs/customize-theme/en
-@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+//
+// ng-zorro-antd 18 has no runtime CSS-variable theming — this file compiles
+// to ONE static CSS bundle at build time. Do NOT set @primary-color,
+// @border-radius-base, or any other color/shape variable here: it would be
+// baked in and could never respond to the dark-mode toggle. All color,
+// radius, shadow, and focus-ring tokens live in
+// src/assets/styles/theme-tokens.scss (CSS custom properties) and are
+// applied to the compiled .ant-* classes by
+// src/assets/styles/ant-theme-customize.scss.
+//
+// Font-family is the one build-time exception: ng-zorro's Less bakes
+// `font-family: @font-family;` directly into its component stylesheets, so a
+// later CSS override would mean chasing every .ant-* selector. Instead we
+// point the Less variable at the runtime CSS custom property — Less just
+// emits `var(--font-sans)` as literal text, and the browser resolves it from
+// theme-tokens.scss. The font stack itself still lives in exactly one place.
+@font-family: var(--font-sans);
+@code-family: var(--font-mono);
 
-//@primary-color: Rebeccapurple;
-//@border-radius-base: 20px;
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
