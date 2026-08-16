@@ -10,7 +10,6 @@ import {NzDatePickerComponent} from "ng-zorro-antd/date-picker";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {DateAndTimeService} from "../../../logic/date-and-time/date-and-time.service";
 import {DateDifferenceModel} from "../../../model/date-time.model";
-import {firstLetterToUpperCase} from "../../../util/string.util";
 import {isAllValuesEqualTo, removeDuplicates} from "../../../util/object.util";
 
 @Component({
@@ -57,7 +56,9 @@ export class AgeCalculatorComponent {
       this.results = this.dateAndTimeService.calculateDateDifference(birthday, toDate)
         .filter(res => !isAllValuesEqualTo(res, "0"));
 
-      this.stringResults = removeDuplicates(this.results.map(this.formatDateDiff));
+      this.stringResults = removeDuplicates(
+        this.results.map(result => this.dateAndTimeService.formatDateDifference(result))
+      );
     } else {
       Object.values(this.formGroup.controls).forEach(control => {
         if (control.invalid) {
@@ -66,21 +67,5 @@ export class AgeCalculatorComponent {
         }
       });
     }
-  }
-
-  formatDateDiff(result: Partial<DateDifferenceModel>) {
-    const keys =  Object.keys(result) as (keyof DateDifferenceModel)[];
-
-    return keys
-      .map((key): string => {
-        const value: number = result[key]!;
-        if (value !== undefined && value !== 0) {
-          return value + " " + firstLetterToUpperCase(key);
-        }
-
-        return "";
-      })
-      .filter(str => str.length > 0)
-      .join(", ");
   }
 }

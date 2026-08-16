@@ -95,19 +95,25 @@ export class UnitConverterComponent {
   }
 
   get resultString() {
-    const value = this.formGroup.value.value!;
-    const from = this.formGroup.value.from!;
-    return value + " " + from + " = " + this.result.toFixed(this.roundDigits) + " " + this.formGroup.value.to;
+    return this.unitConverterService.formatResult(
+      this.formGroup.value.value!,
+      this.formGroup.value.from!,
+      this.formGroup.value.to,
+      this.result,
+      this.roundDigits
+    );
   }
 
   get bestResultString() {
-    const value = this.formGroup.value.value!;
-    const from = this.formGroup.value.from!;
-    return value + " " + from + " = " + this.bestResult?.val + " " + this.bestResult?.unit;
+    return this.unitConverterService.formatBestResult(
+      this.formGroup.value.value!,
+      this.formGroup.value.from!,
+      this.bestResult
+    );
   }
 
   get showBestResult() {
-    return this.bestResult != null && this.formGroup.value.to !== this.bestResult!.unit;
+    return this.unitConverterService.shouldShowBestResult(this.formGroup.value.to, this.bestResult);
   }
 
   validateRoundDigits() {
