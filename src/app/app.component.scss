@@ -7,6 +7,11 @@
 
 .app-layout {
   height: 100vh;
+  background-color: var(--background);
+
+  nz-layout {
+    background-color: var(--background);
+  }
 
   .menu-sidebar {
     position: relative;
@@ -84,18 +89,19 @@ nz-header {
   position: relative;
   height: 64px;
   padding: 0;
-  background: var(--background);
+  background: var(--card);
   box-shadow: 0 1px 0 var(--border);
 }
 
 nz-content {
   margin: 24px;
+  background-color: var(--background);
 }
 
 .inner-content {
   display: block;
   padding: 24px;
-  background: var(--background);
+  background: var(--card);
   height: 100%;
   overflow: auto;
 }

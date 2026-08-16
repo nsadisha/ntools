@@ -124,6 +124,29 @@ body {
   color: var(--muted-foreground);
 }
 
+// Clear (×) icons — Ant bakes these to a light-mode-only faint gray
+// (@disabled-color) plus, for select, a white circular background.
+.ant-input-clear-icon,
+.ant-select-clear {
+  color: var(--muted-foreground) !important;
+}
+
+.ant-select-clear {
+  background-color: var(--background) !important;
+}
+
+// Disabled controls — same baked @disabled-color/@disabled-bg pattern.
+.ant-input[disabled],
+.ant-input-disabled,
+.ant-input-number-disabled,
+.ant-input-number-disabled .ant-input-number-input,
+.ant-select-disabled .ant-select-selector,
+.ant-btn[disabled] {
+  color: var(--muted-foreground) !important;
+  background-color: var(--muted) !important;
+  border-color: var(--border) !important;
+}
+
 // =====================================================================
 // Select / Autocomplete dropdowns
 // =====================================================================
@@ -193,6 +216,19 @@ body {
 h1.ant-typography, h2.ant-typography, h3.ant-typography,
 h4.ant-typography, h5.ant-typography {
   color: var(--foreground);
+}
+
+// nzType variants compile to `.ant-typography.ant-typography-X` (two
+// classes) which beats the plain `.ant-typography` rule above — override
+// explicitly so secondary/disabled text (card subtitles, hint text, BMI
+// popup, contact pages, etc.) isn't left at Ant's baked light-mode gray.
+.ant-typography.ant-typography-secondary,
+.ant-typography.ant-typography-disabled {
+  color: var(--muted-foreground) !important;
+}
+
+.ant-typography.ant-typography-danger {
+  color: var(--destructive) !important;
 }
 
 // =====================================================================
@@ -279,12 +315,20 @@ h4.ant-typography, h5.ant-typography {
   }
 }
 
+.ant-tabs-tab:hover,
+.ant-tabs-tab-btn:hover {
+  color: var(--primary) !important;
+}
+
 .ant-tabs-ink-bar {
   background-color: var(--primary);
 }
 
+// Ant's own compiled selector for this divider
+// (.ant-tabs-top > .ant-tabs-nav::before) is more specific than a plain
+// .ant-tabs-nav::before — !important guarantees ours wins regardless.
 .ant-tabs-nav::before {
-  border-color: var(--border);
+  border-color: var(--border) !important;
 }
 
 // =====================================================================
@@ -374,6 +418,20 @@ h4.ant-typography, h5.ant-typography {
   background-color: var(--sidebar);
   color: var(--sidebar-foreground);
   border-top: 1px solid var(--sidebar-border);
+}
+
+// =====================================================================
+// Markdown preview (ngx-markdown <markdown> element — covers both the
+// rendered preview and the empty-state placeholder, same render pipeline)
+// =====================================================================
+// ng-zorro's global reset sets `h1, h2, h3, h4, h5, h6 { color: @heading-color }`
+// unscoped (no .ant-typography needed) — this directly targets any heading
+// rendered inside the markdown preview, so inheriting `color` from the
+// `markdown` rule below isn't enough; headings need their own override.
+markdown,
+markdown h1, markdown h2, markdown h3,
+markdown h4, markdown h5, markdown h6 {
+  color: var(--foreground);
 }
 
 // =====================================================================
